@@ -1,4 +1,3 @@
-
 def add(x, y):
     return x + y
 
@@ -10,28 +9,37 @@ def multiply(x, y):
 
 def divide(x, y):
     if y == 0:
-        return "خطأ: لا يمكن القسمة على صفر!"
+        return "Error: Division by zero is not allowed!"
     return x / y
 
-print("--- آلة حاسبة بسيطة بلغة بايثون ---")
-print("اختر العملية:")
-print("1. جمع")
-print("2. طرح")
-print("3. ضرب")
-print("4. قسمة")
+def calculator():
+    print("--- Simple Python Calculator ---")
+    print("Select operation:")
+    print("1. Add")
+    print("2. Subtract")
+    print("3. Multiply")
+    print("4. Divide")
 
-choice = input("أدخل رقم العملية (1/2/3/4): ")
+    choice = input("Enter choice (1/2/3/4): ")
 
-num1 = float(input("أدخل الرقم الأول: "))
-num2 = float(input("أدخل الرقم الثاني: "))
+    if choice in ('1', '2', '3', '4'):
+        try:
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+        except ValueError:
+            print("Invalid input. Please enter numbers only.")
+            return
 
-if choice == '1':
-    print(f"النتيجة: {num1} + {num2} = {add(num1, num2)}")
-elif choice == '2':
-    print(f"النتيجة: {num1} - {num2} = {subtract(num1, num2)}")
-elif choice == '3':
-    print(f"النتيجة: {num1} * {num2} = {multiply(num1, num2)}")
-elif choice == '4':
-    print(f"النتيجة: {num1} / {num2} = {divide(num1, num2)}")
-else:
-    print("إدخال غير صحيح!")
+        if choice == '1':
+            print(f"Result: {num1} + {num2} = {add(num1, num2)}")
+        elif choice == '2':
+            print(f"Result: {num1} - {num2} = {subtract(num1, num2)}")
+        elif choice == '3':
+            print(f"Result: {num1} * {num2} = {multiply(num1, num2)}")
+        elif choice == '4':
+            print(f"Result: {num1} / {num2} = {divide(num1, num2)}")
+    else:
+        print("Invalid input!")
+
+if __name__ == "__main__":
+    calculator()
